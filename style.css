@@ -35,6 +35,7 @@ nav {
 
 .logo {
     width: 140px;
+    border-radius: 15px;
 }
 
 nav ul li {
@@ -74,12 +75,13 @@ nav ul li a:hover::after {
 .header-text h1 {
     font-size: 60px;
     margin-top: 20px;
-    background-color: #262626;
 }
 
+/*----- take out for now -----
 .header-text h1 span {
     color: rgb(34, 108, 178)
 }
+/*
 
 /* ------------about------------- */
 #about {
@@ -146,9 +148,19 @@ nav ul li a:hover::after {
     margin: 20px 0;
 }
 
+  .tab-contents ul ul {
+    list-style-type: circle;
+    padding-left: 40px; /* Adjust the indentation as needed */
+  }
+
+.tab-contents ul li li {
+    list-style: circle;
+    margin: 20px 0;
+}
+
 .tab-contents ul li span {
     color: rgb(34, 108, 178);
-    font-size: 30px; 
+    font-size: 20px; 
     display: block;
 }
 
@@ -211,6 +223,26 @@ nav ul li a:hover::after {
     padding: 50px 0;
 }
 
+
+.portfolio a {
+    font-size: 30px;
+}
+
+.portfolio btn {
+    color: #0044ff;
+    display: flex;
+    align-items: center;
+}
+
+.portfolio .btn i {
+    margin-left: 5px;
+}
+
+.fa-brands.fa-square-github {
+    font-size: 30px; /* Adjust the font size as desired */
+    vertical-align: middle;
+  }
+
 .work-list  {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -226,6 +258,8 @@ nav ul li a:hover::after {
 
 .work img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
