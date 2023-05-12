@@ -1,26 +1,23 @@
 var tablinks = document.getElementsByClassName("tab-links");
 var tabcontents = document.getElementsByClassName("tab-contents");
 
-var script = document.createElement('script');
-script.src = 'https://kit.fontawesome.com/7599c4edbf.js';
-script.crossOrigin = 'anonymous';
-document.head.appendChild(script);
-
-function opentab(tabname) {
-  for (tablink of tablinks) {
-    tablink.classList.remove("active-link");
+function opentab(event, tabname) {
+  for (var i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active-link");
   }
-  for (tabcontent of tabcontents) {
-    tabcontent.classList.remove("active-tab");
+  for (var i = 0; i < tabcontents.length; i++) {
+    tabcontents[i].classList.remove("active-tab");
   }
   event.currentTarget.classList.add("active-link");
   document.getElementById(tabname).classList.add("active-tab");
 }
 
-var sidemeu = document.getElementById("sidemenu");
+var sidemenu = document.getElementById("sidemenu");
+
 function openmenu() {
-  sidemeu.style.right = "0";
+  sidemenu.style.right = "0";
 }
+
 function closemenu() {
-  sidemeu.style.right = "-200px";
+  sidemenu.style.right = "-200px";
 }
