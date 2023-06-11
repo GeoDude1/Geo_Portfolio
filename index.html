@@ -49,11 +49,16 @@
             </p>
 
             <div class="tab-titles">
-              <p class="tab-links active-link" onclick="opentab(event, 'experience')">
+              <p
+                class="tab-links active-link"
+                onclick="opentab(event, 'experience')"
+              >
                 Experience
               </p>
               <p class="tab-links" onclick="opentab(event, 'skills')">Skills</p>
-              <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+              <p class="tab-links" onclick="opentab(event, 'education')">
+                Education
+              </p>
             </div>
 
             <div class="tab-contents" id="skills">
@@ -278,11 +283,11 @@
             >
           </div>
           <div class="contact-right">
-            <form>
+            <form name="submit-to-google-sheet">
               <input type="text" name="Name" placeholder="Your Name" required />
               <input
                 type="email"
-                name="email"
+                name="Email"
                 placeholder="Your Email"
                 required
               />
@@ -293,6 +298,7 @@
               ></textarea>
               <button type="submit" class="btn btn2">Submit</button>
             </form>
+            <span id="msg"></span>
           </div>
         </div>
       </div>
@@ -305,5 +311,24 @@
       src="https://kit.fontawesome.com/7599c4edbf.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzSK-gNgpca7QKq2eEqp-t3ADVlJ-3Tspppjl-P2tEsE00s_TjEMxdV047HX8GtahBx/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      const msg = document.getElementById("msg");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            msg.innerHTML = "Message sent successfully";
+            setTimeout(function () {
+              msg.innerHTML = "";
+            }, 5000);
+            form.reset();
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
